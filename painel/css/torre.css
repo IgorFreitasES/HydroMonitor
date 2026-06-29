@@ -1,0 +1,22 @@
+/* Torre SVG */
+
+
+.painel-torre{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:40px;
+
+}
+
+#torreSVG{
+
+    width:420px;
+
+    max-width:100%;
+
+}

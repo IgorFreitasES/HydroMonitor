@@ -1,0 +1,106 @@
+/* ==========================================================
+   CABEÇALHO
+========================================================== */
+
+header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    background:var(--cor-card);
+
+    padding:20px 40px;
+
+    border-bottom:1px solid var(--cor-borda);
+
+    box-shadow:var(--sombra);
+
+}
+
+.cabecalho-esquerda{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:20px;
+
+}
+
+.logo{
+
+    font-size:48px;
+
+}
+
+.titulo h1{
+
+    font-size:32px;
+
+    letter-spacing:1px;
+
+}
+
+.titulo p{
+
+    color:var(--cor-azul);
+
+    margin-top:5px;
+
+    font-size:15px;
+
+}
+
+.cabecalho-direita{
+
+    width:70px;
+
+    height:70px;
+
+    border:2px dashed var(--cor-texto-secundario);
+
+    border-radius:15px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    color:var(--cor-texto-secundario);
+
+}
+
+
+/* ==========================================================
+   CONTEÚDO
+========================================================== */
+
+.conteudo{
+
+    max-width:1700px;
+
+    margin:auto;
+
+    padding:25px;
+
+}
+
+/* ==========================================================
+   RODAPÉ
+========================================================== */
+
+footer{
+
+    text-align:center;
+
+    color:var(--cor-texto-secundario);
+
+    padding:20px;
+
+    margin-top:40px;
+
+}

@@ -1,0 +1,81 @@
+@import url("variaveis.css");
+@import url("componentes.css");
+@import url("torre.css");
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+
+    background:var(--cor-fundo);
+
+    color:var(--cor-texto);
+
+    font-family:
+
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
+}
+
+header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:25px 40px;
+
+    background:var(--cor-card);
+
+    border-bottom:1px solid var(--cor-borda);
+
+}
+
+.titulo h1{
+
+    font-size:34px;
+
+    color:var(--cor-texto);
+
+}
+
+.titulo p{
+
+    color:var(--cor-azul);
+
+    margin-top:6px;
+
+}
+
+.logo{
+
+    font-size:50px;
+
+}
+
+.brasao{
+
+    width:70px;
+
+    height:70px;
+
+    border-radius:12px;
+
+    border:2px dashed var(--cor-texto-secundario);
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    color:var(--cor-texto-secundario);
+
+}

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<svg
+    id="torre-svg"
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 500 900">
+
+    <g id="base">
+
+        <!-- Base -->
+
+        <rect
+            x="80"
+            y="860"
+            width="340"
+            height="18"
+            rx="3"
+            fill="#8b8b8b"/>
+
+        <!-- Grama -->
+
+        <path
+            d="M70 878
+               L90 872
+               L110 878
+               L130 870
+               L150 878
+               L170 871
+               L190 878
+               L210 872
+               L230 878
+               L250 870
+               L270 878
+               L290 871
+               L310 878
+               L330 872
+               L350 878
+               L370 871
+               L390 878
+               L420 878"
+            stroke="#4CAF50"
+            stroke-width="4"
+            fill="none"/>
+
+    </g>
+
+
+<g id="reservatorio-inferior">
+
+    <!-- Corpo -->
+
+    <rect
+        x="105"
+        y="610"
+        width="290"
+        height="190"
+        rx="8"
+        fill="#c9c9c9"/>
+
+    <!-- Tampa Superior -->
+
+    <ellipse
+        cx="250"
+        cy="610"
+        rx="145"
+        ry="22"
+        fill="#d8d8d8"/>
+
+    <!-- Base Inferior -->
+
+    <ellipse
+        cx="250"
+        cy="800"
+        rx="145"
+        ry="18"
+        fill="#b7b7b7"/>
+
+</g>
+</svg>

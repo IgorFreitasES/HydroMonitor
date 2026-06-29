@@ -1,0 +1,44 @@
+/* ==========================================================
+   HYDROMONITOR
+   Sistema de Monitoramento Hídrico
+   Variáveis Globais
+========================================================== */
+
+:root{
+
+    /* ===== CORES ===== */
+
+    --cor-fundo: #0F172A;
+    --cor-card: #1E293B;
+    --cor-card-hover: #263548;
+
+    --cor-borda: #334155;
+
+    --cor-azul: #3B82F6;
+    --cor-verde: #22C55E;
+    --cor-vermelho: #EF4444;
+    --cor-amarelo: #FACC15;
+
+    --cor-texto: #F8FAFC;
+    --cor-texto-secundario: #94A3B8;
+
+    /* ===== ESPAÇAMENTOS ===== */
+
+    --padding-pequeno: 10px;
+    --padding-medio: 20px;
+    --padding-grande: 30px;
+
+    /* ===== BORDAS ===== */
+
+    --raio:16px;
+
+    /* ===== SOMBRAS ===== */
+
+    --sombra:
+        0px 10px 25px rgba(0,0,0,.25);
+
+    /* ===== TRANSIÇÃO ===== */
+
+    --transicao:0.25s;
+
+}
