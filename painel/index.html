@@ -18,9 +18,9 @@
 </head>
 
 <body>
-<header>
+<header class="topo">
 
-    <div class="cabecalho-esquerda">
+    <div class="topo-esquerda">
 
         <div class="logo">
 
@@ -28,225 +28,367 @@
 
         </div>
 
-        <div class="titulo">
+        <div>
 
-            <h1>MONITORAMENTO HÍDRICO</h1>
+            <h1>HydroMonitor</h1>
 
-            <p>Sistema Supervisório</p>
+            <span>Sistema Supervisório de Monitoramento Hídrico</span>
 
         </div>
 
     </div>
 
-    <div class="cabecalho-direita">
+    <div class="topo-direita">
 
-        LOGO
+        <!-- Wi-Fi removido do cabeçalho -->
+
 
     </div>
 
 </header>
 
-<main class="conteudo">
+<main class="dashboard">
 
-   <section class="painel-torre">
+    <!-- PAINEL ESQUERDO -->
 
-    <svg
-        id="torreSVG"
-        viewBox="0 0 500 900">
+    <aside class="painel painel-esquerdo">
 
-        <!-- Base -->
-<rect
-    x="70"
-    y="680"
-    width="360"
-    height="18"
-    rx="4"
-    fill="#8f8f8f"/>
+        <h2>Caixa d'Água</h2>
 
-<!-- Grama -->
-<rect
-    x="40"
-    y="690"
-    width="420"
-    height="12"
-    rx="8"
-    fill="#4CAF50"/>
+        <div class="card">
 
-<!-- Reservatório Inferior -->
+    <span class="card-titulo">
+        💧 NÍVEL DA ÁGUA
+    </span>
 
-<ellipse
-    cx="250"
-    cy="520"
-    rx="120"
-    ry="18"
-    fill="#d2d2d2"/>
+    <div class="barra">
 
-<rect
-    x="130"
-    y="520"
-    width="240"
-    height="150"
-    fill="#c8c8c8"/>
+        <div
+            id="barraNivel"
+            class="barra-preenchimento">
+        </div>
 
-<ellipse
-    cx="250"
-    cy="670"
-    rx="120"
-    ry="18"
-    fill="#9b9b9b"/>
+    </div>
 
-<!-- Coluna esquerda -->
+    <span
+        id="nivelTexto"
+        class="valor-grande">
 
-<rect
-    x="100"
-    y="120"
-    width="44"
-    height="550"
-    rx="10"
-    fill="#c4c4c4"/>
+        0%
 
-<!-- Coluna direita -->
+    </span>
 
-<rect
-    x="356"
-    y="120"
-    width="44"
-    height="550"
-    rx="10"
-    fill="#c4c4c4"/>
+    
 
-<!-- Reservatório Superior -->
 
-<g id="reservatorioSuperior">
+    <p id="descricaoNivel" class="descricao-nivel">
+    Aguardando...
+</p>
+    
 
-    <!-- Tampa -->
+</div>
 
-    <ellipse
-        cx="250"
-        cy="105"
-        rx="120"
-        ry="18"
-        fill="#d5d5d5"/>
+<div class="card">
 
-    <!-- Corpo -->
+            <h3>🪣 Volume</h3>
+
+            <strong id="volumeTexto">0 L</strong>
+
+        </div>
+
+       
+
+    </aside>
+
+
+    <!-- PAINEL CENTRAL -->
+
+    <section class="painel-central">
+
+        <svg
+    id="torreSVG"
+    viewBox="0 0 500 900">
+
+    <!-- ========================= -->
+    <!-- PEDESTAL -->
+    <!-- ========================= -->
 
     <rect
-        x="130"
-        y="105"
-        width="240"
-        height="140"
-        fill="#c8c8c8"/>
+    id="baseConcreto"
+    x="55"
+    y="705"
+    width="390"
+    height="32"
+    rx="10"
+    fill="#8b8f95"/>
 
-    <!-- Fundo -->
+    <rect
+    id="grama"
+    x="25"
+        y="735"
+        width="450"
+        height="12"
+        rx="10"
+        fill="#43b047"/>
+
+    <!-- ========================= -->
+    <!-- RESERVATÓRIO INFERIOR -->
+    <!-- ========================= -->
+        <g id="reservatorioInferior">
 
     <ellipse
+        id="tampaInferior"
         cx="250"
-        cy="245"
-        rx="120"
-        ry="18"
-        fill="#9f9f9f"/>
+        cy="520"
+        rx="135"
+        ry="22"
+        fill="#d8d8d8"/>
+
+    <rect
+        id="corpoInferior"
+        x="115"
+        y="520"
+        width="270"
+        height="165"
+        fill="#cfcfcf"/>
+
+    <ellipse
+        id="fundoInferior"
+        cx="250"
+        cy="685"
+        rx="135"
+        ry="22"
+        fill="#9c9c9c"/>
 
 </g>
 
-    <!-- Água -->
+    <!-- ========================= -->
+    <!-- RESERVATÓRIO SUPERIOR -->
+    <!-- ========================= -->
 
-<clipPath id="clipAgua">
+    <g id="reservatorioSuperior">
+
+    <ellipse
+        id="tampaSuperior"
+        cx="250"
+        cy="120"
+        rx="145"
+        ry="22"
+        fill="#dddddd"/>
 
     <rect
-        x="130"
-        y="105"
-        width="240"
-        height="140"/>
+        id="corpoSuperior"
+        x="105"
+        y="120"
+        width="290"
+        height="170"
+        fill="#cecece"/>
 
-</clipPath>
+    <ellipse
+        id="fundoSuperior"
+        cx="250"
+        cy="290"
+        rx="145"
+        ry="22"
+        fill="#a8a8a8"/>
 
-<defs>
+</g>
 
-    <linearGradient id="gradienteAgua"
-        x1="0%"
-        y1="0%"
-        x2="0%"
-        y2="100%">
+    <!-- ========================= -->
+    <!-- COLUNAS -->
+    <!-- ========================= -->
 
-        <stop offset="0%" stop-color="#6ec8ff"/>
+    <rect
+    id="colunaEsquerda"
+        x="90"
+        y="118"
+        width="58"
+        height="567"
+        rx="10"
+        fill="#cfcfcf"/>
 
-        <stop offset="60%" stop-color="#2d8cff"/>
+    <rect
+    id="colunaDireita"
+        x="352"
+        y="118"
+        width="58"
+        height="567"
+        rx="10"
+        fill="#cfcfcf"/>
 
-        <stop offset="100%" stop-color="#005fd6"/>
+    <!-- ========================= -->
+    <!-- ÁREA DA ÁGUA -->
+    <!-- ========================= -->
 
-    </linearGradient>
+    <clipPath id="clipAgua">
 
-</defs>
+    <rect
+        id="areaAgua"
+        x="105"
+            y="120"
+            width="290"
+            height="170"/>
+
+    </clipPath>
+
+               <!-- ========================= -->
+    <!-- DEFINIÇÕES -->
+    <!-- ========================= -->
+
+    <defs>
+
+        <linearGradient
+    id="gradienteAgua"
+    x1="0%"
+    y1="0%"
+    x2="0%"
+    y2="100%">
+
+    <stop offset="0%" stop-color="#bfe8ff"/>
+
+    <stop offset="35%" stop-color="#67c4ff"/>
+
+    <stop offset="75%" stop-color="#2b8cff"/>
+
+    <stop offset="100%" stop-color="#0068e0"/>
+
+</linearGradient>
+
+        <linearGradient
+            id="gradienteReflexo"
+            x1="0%"
+            y1="0%"
+            x2="100%"
+            y2="0%">
+
+            <stop offset="0%" stop-color="rgba(255,255,255,0)"/>
+            <stop offset="50%" stop-color="rgba(255,255,255,.35)"/>
+            <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
+
+        </linearGradient>
+
+    </defs>
+
+    <!-- ========================= -->
+    <!-- ÁGUA -->
+    <!-- ========================= -->
 
 
-<path
-    id="onda"
+       <g id="grupoAgua">
 
-    d="
-        M130 230
-        Q150 220 170 230
-        T210 230
-        T250 230
-        T290 230
-        T330 230
-        T370 230
+    <rect
+        id="agua"
+        clip-path="url(#clipAgua)"
+        x="105"
+        y="155"
+        width="290"
+        height="100"
+        fill="url(#gradienteAgua)"
+        opacity="0.72"/>
 
-        L370 330
-        L130 330
+    <path
+        id="onda"
+        clip-path="url(#clipAgua)"
+        d="
+        M105 190
+
+        C125 184 145 196 165 190
+
+        S205 184 225 190
+
+        S265 196 285 190
+
+        S325 184 345 190
+
+        S375 196 395 190
+
+        L395 290
+
+        L105 290
+
         Z"
+        fill="#9fe2ff"
+        opacity=".55"/>
 
-    fill="#8fd8ff"
-
-    opacity="0.55"
-
-    clip-path="url(#clipAgua)"/>
-
-
-<rect
-    id="agua"
-    clip-path="url(#clipAgua)"
-    x="130"
-    y="145"
-    width="240"
-    height="100"
-    fill="#2d8cff"/>
+    <rect
+        id="reflexoAgua"
+        x="116"
+        y="112"
+        width="8"
+        height="135"
+        rx="4"
+        fill="white"
+        opacity="0.08"/>
 
 
-    </svg>
+        <!-- ========================= -->
+    <!-- BRILHO SUPERIOR -->
+    <!-- ========================= -->
+
+    <ellipse
+    id="brilhoSuperior"
+    cx="250"
+    cy="128"
+
+        rx="138"
+
+        ry="8"
+
+        fill="white"
+
+        opacity=".18"/>
+
+</g>
+
 
 
 
     
 
+</svg>
 
-    
-</section>
+    </section>
 
+
+    <!-- PAINEL DIREITO -->
+
+    <aside class="painel painel-direito">
+
+
+        <h2>Monitoramento</h2>
+
+        
+         <div class="card">
+
+            <h3>⚙ Sistema</h3>
+
+            <strong id="statusTexto">---</strong>
+
+        </div>
+        
+
+        <div class="card">
+
+            <h3>⚡ Bomba</h3>
+
+            <strong id="bombaTexto">Desligada</strong>
+
+        </div>
+
+        <div class="card">
+
+            <h3>📶 Wi-Fi</h3>
+
+            <strong id="wifiTexto">0%</strong>
+
+        </div>
+
+    </aside>
 
 </main>
 
 
-<div class="painel-info">
-
-    <h2>Status da Caixa</h2>
-
-    <p>Nível:
-        <strong id="nivelTexto">0%</strong>
-    </p>
-
-    <p>Distância:
-        <strong id="distanciaTexto">0 cm</strong>
-    </p>
-
-    <p>Volume:
-        <strong id="volumeTexto">0 L</strong>
-    </p>
-
-    <p>Status:
-        <strong id="statusTexto">---</strong>
-    </p>
-
-</div>
+ 
 
 
 <footer>

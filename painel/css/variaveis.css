@@ -1,44 +1,81 @@
-/* ==========================================================
-   HYDROMONITOR
-   Sistema de Monitoramento Hídrico
-   Variáveis Globais
-========================================================== */
-
 :root{
 
     /* ===== CORES ===== */
 
-    --cor-fundo: #0F172A;
-    --cor-card: #1E293B;
-    --cor-card-hover: #263548;
+    --cor-fundo:#0F172A;
 
-    --cor-borda: #334155;
+    --cor-fundo-topo:#0B1B2F;
 
-    --cor-azul: #3B82F6;
-    --cor-verde: #22C55E;
-    --cor-vermelho: #EF4444;
-    --cor-amarelo: #FACC15;
+    --cor-card:#1E293B;
 
-    --cor-texto: #F8FAFC;
-    --cor-texto-secundario: #94A3B8;
+    --cor-card-gradiente-1:#1B2D4A;
+
+    --cor-card-gradiente-2:#16233C;
+
+    --cor-card-hover:#263548;
+
+    --cor-borda:#334155;
+
+    --cor-azul:#3B82F6;
+
+    --cor-verde:#22C55E;
+
+    --cor-vermelho:#EF4444;
+
+    --cor-amarelo:#FACC15;
+
+    --cor-texto:#F8FAFC;
+
+    --cor-texto-secundario:#94A3B8;
+
+    --cor-barra:#2D3D63;
+
+    --cor-barra-azul:#42D4FF;
+
+    --cor-barra-azul2:#1E90FF;
+
+    --cor-barra-azul3:#005EFF;
+
+    --cor-halo:rgba(0,170,255,.18);
+
+    --cor-halo-suave:rgba(0,170,255,.05);
 
     /* ===== ESPAÇAMENTOS ===== */
 
-    --padding-pequeno: 10px;
-    --padding-medio: 20px;
-    --padding-grande: 30px;
+    --padding-pequeno:10px;
+
+    --padding-medio:20px;
+
+    --padding-grande:30px;
 
     /* ===== BORDAS ===== */
 
+    --raio-pequeno:10px;
+
     --raio:16px;
+
+    --raio-grande:18px;
+
+    --raio-pill:50px;
 
     /* ===== SOMBRAS ===== */
 
     --sombra:
-        0px 10px 25px rgba(0,0,0,.25);
+        0 10px 25px rgba(0,0,0,.25);
 
-    /* ===== TRANSIÇÃO ===== */
+    --sombra-card:
+        0 12px 28px rgba(0,0,0,.28);
 
-    --transicao:0.25s;
+    --sombra-card-hover:
+        0 24px 45px rgba(0,0,0,.45);
+
+    --sombra-torre:
+        0 24px 40px rgba(0,0,0,.35);
+
+    /* ===== TRANSIÇÕES ===== */
+
+    --transicao:.25s;
+
+    --transicao-lenta:.50s;
 
 }

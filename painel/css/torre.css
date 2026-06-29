@@ -1,7 +1,10 @@
-/* Torre SVG */
+/* ==========================================================
+   TORRE
+========================================================== */
 
+.painel-central{
 
-.painel-torre{
+    position:relative;
 
     display:flex;
 
@@ -9,14 +12,45 @@
 
     align-items:center;
 
-    padding:40px;
+}
+
+/* Halo luminoso atrás da torre */
+
+.painel-central::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:620px;
+
+    height:620px;
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(
+
+            rgba(0,170,255,.18),
+
+            rgba(0,170,255,.05),
+
+            transparent
+
+        );
+
+    filter:blur(40px);
+
+    z-index:0;
 
 }
 
+/* Torre */
+
 #torreSVG{
 
-    width:420px;
+    position:relative;
 
-    max-width:100%;
+    z-index:1;
 
 }

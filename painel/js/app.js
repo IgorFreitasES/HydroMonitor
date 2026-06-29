@@ -1,12 +1,17 @@
 const agua = document.getElementById("agua");
 
 const nivelTexto = document.getElementById("nivelTexto");
-const distanciaTexto = document.getElementById("distanciaTexto");
 const volumeTexto = document.getElementById("volumeTexto");
 const statusTexto = document.getElementById("statusTexto");
+const bombaTexto = document.getElementById("bombaTexto");
 
-const CAPACIDADE_TOTAL = 30000; // litros
+const wifiTexto = document.getElementById("wifiTexto");
+const descricaoNivel =
+    document.getElementById("descricaoNivel");
 
+const barraNivel = document.getElementById("barraNivel");
+
+const CAPACIDADE_TOTAL = 30000;
 function atualizarNivel(nivel) {
 
     const topoReservatorio = 105;
@@ -26,39 +31,82 @@ async function buscarDados() {
 
         const dados = await resposta.json();
 
+        // Atualiza a animação da água
         atualizarNivel(dados.nivel);
 
+        // Barra de nível
+        barraNivel.style.width = `${dados.nivel}%`;
+
+        // Nível
         nivelTexto.textContent = `${dados.nivel.toFixed(0)} %`;
 
-        distanciaTexto.textContent = `${dados.distancia.toFixed(1)} cm`;
+        if (dados.nivel >= 90) {
 
-        const volume = (dados.nivel / 100) * CAPACIDADE_TOTAL;
+    descricaoNivel.textContent =
+        "Reservatório cheio";
 
+} else if (dados.nivel >= 70) {
+
+    descricaoNivel.textContent =
+        "Operação normal";
+
+} else if (dados.nivel >= 40) {
+
+    descricaoNivel.textContent =
+        "Nível intermediário";
+
+} else if (dados.nivel >= 15) {
+
+    descricaoNivel.textContent =
+        "Baixo nível";
+
+} else {
+
+    descricaoNivel.textContent =
+        "Abastecimento necessário";
+
+}
+
+
+
+
+        // Volume
         volumeTexto.textContent =
-            `${volume.toLocaleString("pt-BR")} L`;
+            `${dados.volume.toLocaleString("pt-BR")} L`;
 
-        if (dados.nivel >= 70) {
+        // Status
+        if (dados.status === "NORMAL") {
 
-            statusTexto.textContent = "🟢 Normal";
+    statusTexto.textContent = "🟢 Operação";
 
-        } else if (dados.nivel >= 30) {
+} else if (dados.status === "ATENCAO") {
 
-            statusTexto.textContent = "🟡 Atenção";
+    statusTexto.textContent = "🟡 Atenção";
 
-        } else {
+} else {
 
-            statusTexto.textContent = "🔴 Crítico";
+    statusTexto.textContent = "🔴 Alarme";
 
-        }
+}
+
+        // Bomba
+        bombaTexto.textContent =
+            dados.bomba ? "🟢 Ligada" : "⚪ Desligada";
+
+        // ESP32
+        
+
+        // Wi-Fi
+        wifiTexto.textContent = `${dados.wifi.qualidade}%`;
+        
 
     } catch (erro) {
 
-        console.error(erro);
+        console.error("Erro ao buscar dados:", erro);
 
     }
 
 }
-
 buscarDados();
 
 setInterval(buscarDados, 500);

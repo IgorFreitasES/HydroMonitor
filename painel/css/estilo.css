@@ -10,55 +10,30 @@
 
 body{
 
-    background:var(--cor-fundo);
+    min-height:100vh;
+
+    background:
+        radial-gradient(
+            circle at center,
+            #203250 0%,
+            #16243d 55%,
+            #0d1527 100%);
 
     color:var(--cor-texto);
 
     font-family:
-
         "Segoe UI",
         Arial,
         sans-serif;
 
-}
-
-header{
-
-    display:flex;
-
-    justify-content:space-between;
-
-    align-items:center;
-
-    padding:25px 40px;
-
-    background:var(--cor-card);
-
-    border-bottom:1px solid var(--cor-borda);
+    overflow-x:hidden;
 
 }
 
-.titulo h1{
 
-    font-size:34px;
 
-    color:var(--cor-texto);
 
-}
 
-.titulo p{
-
-    color:var(--cor-azul);
-
-    margin-top:6px;
-
-}
-
-.logo{
-
-    font-size:50px;
-
-}
 
 .brasao{
 
@@ -77,5 +52,345 @@ header{
     align-items:center;
 
     color:var(--cor-texto-secundario);
+
+}
+
+
+/* ===========================
+   CABEÇALHO
+=========================== */
+
+.topo{
+
+    height:90px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:0 35px;
+
+    background:#0b1b2f;
+
+    border-bottom:1px solid rgba(255,255,255,.08);
+
+}
+
+.topo-esquerda{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:18px;
+
+}
+
+.logo{
+
+    font-size:48px;
+
+}
+
+.topo h1{
+
+    margin:0;
+
+    color:#ffffff;
+
+    font-size:30px;
+
+}
+
+.topo span{
+
+    color:#9bb7d1;
+
+    font-size:15px;
+
+}
+
+.topo-direita{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:30px;
+
+}
+
+.status-item{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    color:white;
+
+}
+
+.status-led{
+
+    width:12px;
+
+    height:12px;
+
+    border-radius:50%;
+
+}
+
+.online{
+
+    background:#3ddc84;
+
+    box-shadow:0 0 10px #3ddc84;
+
+}
+
+
+
+
+/* ===================================
+   DASHBOARD
+=================================== */
+
+.dashboard{
+
+    display:grid;
+
+    grid-template-columns:
+
+        300px
+
+        minmax(600px,1fr)
+
+        300px;
+
+
+    align-items:center;
+
+    gap:40px;
+
+    padding:25px;
+
+    min-height:auto;
+
+    padding-top:15px;
+
+    padding-bottom:40px;
+
+
+}
+
+.painel{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:20px;
+
+    align-self:start;
+}
+
+.painel h2{
+
+    color:#ffffff;
+
+    font-size:24px;
+
+    font-weight:600;
+
+    letter-spacing:1px;
+
+    margin-bottom:18px;
+
+}
+
+.card{
+
+    background:
+        linear-gradient(
+            180deg,
+            #1b2d4a,
+            #16233c);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:18px;
+
+    padding:24px;
+
+    position:relative;
+
+    overflow:hidden;
+
+    backdrop-filter:blur(6px);
+
+    box-shadow:
+        0 12px 28px rgba(0,0,0,.28);
+
+    transition:
+        transform .25s,
+        box-shadow .25s;
+
+}
+
+.card::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+
+    left:0;
+
+    width:100%;
+
+    height:4px;
+
+    background:
+    linear-gradient(
+        90deg,
+        #2d8cff,
+        #62c4ff,
+        #2d8cff
+    );
+
+}
+
+.card:hover{
+
+    transform:translateY(-4px);
+
+    box-shadow:
+        0 24px 45px rgba(0,0,0,.45);
+
+}
+
+.card h3{
+
+    color:#7fb7ff;
+
+    font-size:15px;
+
+    font-weight:600;
+
+    letter-spacing:.6px;
+
+    margin-bottom:14px;
+
+    text-transform:uppercase;
+
+}
+
+.card strong{
+
+    color:white;
+
+    font-size:40px;
+
+    font-weight:700;
+
+    letter-spacing:1px;
+
+}
+
+.painel-central{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:flex-start;
+
+    padding-top:10px;
+
+}
+
+#torreSVG{
+
+    width:580px;
+
+    max-width:100%;
+
+    margin-top:-110px;
+
+    filter:
+        drop-shadow(0 24px 40px rgba(0,0,0,.35));
+
+    transition:.5s;
+
+}
+
+#reservatorioSuperior{
+
+    filter:
+        drop-shadow(0 8px 18px rgba(0,0,0,.25));
+
+}
+
+
+
+#agua{
+
+    filter:
+
+        drop-shadow(0 0 18px rgba(72,180,255,.45));
+
+}
+
+#onda{
+
+    opacity:.42;
+
+}
+
+#tampaSuperior{
+
+    filter:brightness(1.08);
+
+}
+
+
+#baseConcreto{
+
+    filter:
+        drop-shadow(0 6px 10px rgba(0,0,0,.25));
+
+}
+
+
+#grama{
+
+    filter:
+        brightness(1.12);
+
+}
+
+
+#torreSVG:hover{
+
+    transform:scale(1.01);
+
+}
+
+
+
+footer{
+
+    text-align:center;
+
+    color:var(--cor-texto-secundario);
+
+    padding:20px;
+
+    margin-top:40px;
 
 }

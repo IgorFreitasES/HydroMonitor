@@ -20,22 +20,59 @@ const float DISTANCIA_CHEIO = 20.0;
 float distancia = 0;
 float percentual = 0;
 
+
+const int CAPACIDADE_TOTAL = 30000;
+
+int volume = 0;
+
+String status = "";
+
+bool bomba = false;
+
+int rssi = 0;
+
+int qualidadeWifi = 0;
+
 // -------------------- SERVIDOR WEB --------------------
 
 void enviarDados() {
 
   JsonDocument json;
 
+  // Dados da caixa
   json["nivel"] = percentual;
-  json["distancia"] = distancia;
+  json["volume"] = (int)((percentual / 100.0) * CAPACIDADE_TOTAL);
+
+  if (percentual >= 70)
+    json["status"] = "NORMAL";
+  else if (percentual >= 30)
+    json["status"] = "ATENCAO";
+  else
+    json["status"] = "CRITICO";
+
+  // Estado da bomba (por enquanto fixo)
+  json["bomba"] = bomba;
+
+  // Estado do ESP32
+  json["esp32"] = "ONLINE";
+
+  // Wi-Fi
+  int rssi = WiFi.RSSI();
+
+  json["wifi"]["rssi"] = rssi;
+
+  int qualidade = map(rssi, -90, -40, 0, 100);
+  qualidade = constrain(qualidade, 0, 100);
+
+  json["wifi"]["qualidade"] = qualidade;
 
   String resposta;
 
   serializeJson(json, resposta);
 
-server.sendHeader("Access-Control-Allow-Origin", "*");
-
+  server.sendHeader("Access-Control-Allow-Origin", "*");
   server.send(200, "application/json", resposta);
+
 }
 
 // -------------------- SETUP --------------------
