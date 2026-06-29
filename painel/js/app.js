@@ -1,13 +1,14 @@
 const slider = document.getElementById("slider");
+const agua = document.getElementById("agua");
 
-const agua = document.querySelector(".agua");
+slider.addEventListener("input", atualizarNivel);
 
-const porcentagem = document.getElementById("porcentagem");
+function atualizarNivel() {
 
-slider.addEventListener("input", () => {
+    const nivel = Number(slider.value);
 
-    agua.style.height = slider.value + "%";
+    agua.setAttribute("height", nivel * 2);
 
-    porcentagem.innerHTML = slider.value + "%";
+    agua.setAttribute("y", 330 - (nivel * 2));
 
-});
+}

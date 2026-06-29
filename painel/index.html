@@ -54,8 +54,121 @@
         id="torreSVG"
         viewBox="0 0 500 900">
 
+        <!-- Base -->
+<rect
+    x="70"
+    y="860"
+    width="360"
+    height="18"
+    rx="4"
+    fill="#8f8f8f"/>
+
+<!-- Grama -->
+<rect
+    x="40"
+    y="878"
+    width="420"
+    height="12"
+    rx="8"
+    fill="#4CAF50"/>
+
+<!-- Reservatório inferior -->
+<ellipse
+    cx="250"
+    cy="620"
+    rx="120"
+    ry="18"
+    fill="#d4d4d4"/>
+
+<rect
+    x="130"
+    y="620"
+    width="240"
+    height="160"
+    fill="#c7c7c7"/>
+
+<ellipse
+    cx="250"
+    cy="780"
+    rx="120"
+    ry="18"
+    fill="#b8b8b8"/>
+
+<!-- Coluna esquerda -->
+<rect
+    x="90"
+    y="180"
+    width="50"
+    height="640"
+    rx="8"
+    fill="#c6c6c6"/>
+
+<!-- Coluna direita -->
+<rect
+    x="360"
+    y="180"
+    width="50"
+    height="640"
+    rx="8"
+    fill="#c6c6c6"/>
+
+<!-- Reservatório superior -->
+<ellipse
+    cx="250"
+    cy="180"
+    rx="120"
+    ry="18"
+    fill="#d9d9d9"/>
+
+<rect
+    x="130"
+    y="180"
+    width="240"
+    height="150"
+    fill="#c7c7c7"/>
+
+<ellipse
+    cx="250"
+    cy="330"
+    rx="120"
+    ry="18"
+    fill="#b8b8b8"/>
+
+    <!-- Água -->
+
+<clipPath id="clipAgua">
+
+    <rect
+        x="130"
+        y="190"
+        width="240"
+        height="140"/>
+
+</clipPath>
+
+<rect
+    id="agua"
+    clip-path="url(#clipAgua)"
+    x="130"
+    y="230"
+    width="240"
+    height="100"
+    fill="#2d8cff"/>
+
+
     </svg>
 
+
+
+    <input
+    type="range"
+    id="slider"
+    min="0"
+    max="100"
+    value="72">
+
+
+    
 </section>
 
 
@@ -67,7 +180,7 @@
 
 </footer>
 
-<script src="js/app.js"></script>
+<script src="js/app.js" defer></script>
 <script src="js/torre.js"></script>
 
 </body>
