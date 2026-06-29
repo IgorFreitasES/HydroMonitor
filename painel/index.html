@@ -57,7 +57,7 @@
         <!-- Base -->
 <rect
     x="70"
-    y="860"
+    y="680"
     width="360"
     height="18"
     rx="4"
@@ -66,73 +66,87 @@
 <!-- Grama -->
 <rect
     x="40"
-    y="878"
+    y="690"
     width="420"
     height="12"
     rx="8"
     fill="#4CAF50"/>
 
-<!-- Reservatório inferior -->
+<!-- Reservatório Inferior -->
+
 <ellipse
     cx="250"
-    cy="620"
+    cy="520"
     rx="120"
     ry="18"
-    fill="#d4d4d4"/>
+    fill="#d2d2d2"/>
 
 <rect
     x="130"
-    y="620"
-    width="240"
-    height="160"
-    fill="#c7c7c7"/>
-
-<ellipse
-    cx="250"
-    cy="780"
-    rx="120"
-    ry="18"
-    fill="#b8b8b8"/>
-
-<!-- Coluna esquerda -->
-<rect
-    x="90"
-    y="180"
-    width="50"
-    height="640"
-    rx="8"
-    fill="#c6c6c6"/>
-
-<!-- Coluna direita -->
-<rect
-    x="360"
-    y="180"
-    width="50"
-    height="640"
-    rx="8"
-    fill="#c6c6c6"/>
-
-<!-- Reservatório superior -->
-<ellipse
-    cx="250"
-    cy="180"
-    rx="120"
-    ry="18"
-    fill="#d9d9d9"/>
-
-<rect
-    x="130"
-    y="180"
+    y="520"
     width="240"
     height="150"
-    fill="#c7c7c7"/>
+    fill="#c8c8c8"/>
 
 <ellipse
     cx="250"
-    cy="330"
+    cy="670"
     rx="120"
     ry="18"
-    fill="#b8b8b8"/>
+    fill="#9b9b9b"/>
+
+<!-- Coluna esquerda -->
+
+<rect
+    x="100"
+    y="120"
+    width="44"
+    height="550"
+    rx="10"
+    fill="#c4c4c4"/>
+
+<!-- Coluna direita -->
+
+<rect
+    x="356"
+    y="120"
+    width="44"
+    height="550"
+    rx="10"
+    fill="#c4c4c4"/>
+
+<!-- Reservatório Superior -->
+
+<g id="reservatorioSuperior">
+
+    <!-- Tampa -->
+
+    <ellipse
+        cx="250"
+        cy="105"
+        rx="120"
+        ry="18"
+        fill="#d5d5d5"/>
+
+    <!-- Corpo -->
+
+    <rect
+        x="130"
+        y="105"
+        width="240"
+        height="140"
+        fill="#c8c8c8"/>
+
+    <!-- Fundo -->
+
+    <ellipse
+        cx="250"
+        cy="245"
+        rx="120"
+        ry="18"
+        fill="#9f9f9f"/>
+
+</g>
 
     <!-- Água -->
 
@@ -140,17 +154,59 @@
 
     <rect
         x="130"
-        y="190"
+        y="105"
         width="240"
         height="140"/>
 
 </clipPath>
 
+<defs>
+
+    <linearGradient id="gradienteAgua"
+        x1="0%"
+        y1="0%"
+        x2="0%"
+        y2="100%">
+
+        <stop offset="0%" stop-color="#6ec8ff"/>
+
+        <stop offset="60%" stop-color="#2d8cff"/>
+
+        <stop offset="100%" stop-color="#005fd6"/>
+
+    </linearGradient>
+
+</defs>
+
+
+<path
+    id="onda"
+
+    d="
+        M130 230
+        Q150 220 170 230
+        T210 230
+        T250 230
+        T290 230
+        T330 230
+        T370 230
+
+        L370 330
+        L130 330
+        Z"
+
+    fill="#8fd8ff"
+
+    opacity="0.55"
+
+    clip-path="url(#clipAgua)"/>
+
+
 <rect
     id="agua"
     clip-path="url(#clipAgua)"
     x="130"
-    y="230"
+    y="145"
     width="240"
     height="100"
     fill="#2d8cff"/>
