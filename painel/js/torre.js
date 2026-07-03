@@ -1,2 +1,0 @@
-// Torre SVG
-

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Diagnóstico | HydroMonitor</title>
+  <link rel="stylesheet" href="css/estilo.css">
+</head>
+<body>
+<header class="topo">
+  <div class="topo-esquerda">
+    <div>
+      <h1>HydroMonitor <span class="icone-agua" aria-hidden="true"></span></h1>
+      <span>Sistema Supervisório de Monitoramento Hídrico</span>
+      <details class="menu-secundario">
+        <summary>☰ Menu</summary>
+        <nav aria-label="Navegação secundária">
+          <a href="index.html">Monitoramento</a>
+          <a href="calibracao.html">Calibração</a>
+          <a class="ativo" href="diagnostico.html">Diagnóstico</a>
+          <a href="configuracoes.html">Configurações</a>
+          <a href="historico.html">Histórico</a>
+          <a href="sobre.html">Sobre</a>
+        </nav>
+      </details>
+    </div>
+  </div>
+  <div class="topo-centro" aria-label="Espaço reservado para brasão">
+    <div class="brasao-placeholder">
+      <strong>BRASÃO</strong>
+      <span>Adicionar depois</span>
+    </div>
+  </div>
+  <div class="topo-direita">
+    <div class="data-hora">
+      <span>Data e hora local</span>
+      <strong id="dataTexto">--/--/----</strong>
+      <strong id="horaTexto">--:--:--</strong>
+    </div>
+    <div class="clima-card" aria-label="Clima em Brasília-DF">
+      <span id="climaLocal">Brasília-DF</span>
+      <strong><span id="climaEmoji" aria-hidden="true">☁️</span> <span id="climaTemperatura">--°C</span></strong>
+      <small id="climaDescricao">Clima indisponível</small>
+    </div>
+  </div>
+</header>
+
+<main class="pagina-secundaria diagnostico-page manutencao-page">
+  <section class="diagnostico-cabecalho">
+    <div>
+      <span class="secao-label">Central de manutenção</span>
+      <h2>Diagnóstico técnico do ESP32</h2>
+      <p>Dados preparados para consumir <strong>GET /diagnostico</strong>. Enquanto o endpoint não existir no ESP32, a página usa informações simuladas e placeholders.</p>
+    </div>
+    <button id="btnAtualizarDiagnostico" class="botao-primario" type="button">Atualizar dados</button>
+  </section>
+
+  <section class="diagnostico-secao">
+    <div class="diagnostico-secao-titulo">
+      <span class="secao-label">ESP32</span>
+      <h2>Dispositivo e memória</h2>
+    </div>
+    <div class="diagnostico-grid manutencao-grid" aria-live="polite">
+      <article class="diagnostico-card destaque"><span>Status</span><strong id="diagStatusEsp32">--</strong></article>
+      <article class="diagnostico-card"><span>IP do dispositivo</span><strong id="diagIp">--</strong></article>
+      <article class="diagnostico-card"><span>Uptime</span><strong id="diagUptime">--</strong></article>
+      <article class="diagnostico-card"><span>Versão do firmware</span><strong id="diagFirmware">--</strong></article>
+      <article class="diagnostico-card"><span>Última reinicialização</span><strong id="diagUltimaReinicializacao">--</strong></article>
+      <article class="diagnostico-card"><span>Última atualização</span><strong id="diagUltimaAtualizacao">--</strong></article>
+      <article class="diagnostico-card"><span>Memória livre</span><strong id="diagMemoriaLivre">--</strong></article>
+      <article class="diagnostico-card"><span>Heap livre</span><strong id="diagHeapLivre">--</strong></article>
+      <article class="diagnostico-card"><span>Flash disponível</span><strong id="diagFlashDisponivel">--</strong></article>
+      <article class="diagnostico-card"><span>Temperatura interna</span><strong id="diagTemperatura">--</strong></article>
+    </div>
+  </section>
+
+  <section class="diagnostico-secao">
+    <div class="diagnostico-secao-titulo">
+      <span class="secao-label">Rede</span>
+      <h2>Wi-Fi e conectividade</h2>
+    </div>
+    <div class="diagnostico-grid manutencao-grid">
+      <article class="diagnostico-card"><span>SSID</span><strong id="diagRedeWifi">--</strong></article>
+      <article class="diagnostico-card"><span>RSSI</span><strong id="diagRssi">-- dBm</strong></article>
+      <article class="diagnostico-card"><span>Qualidade Wi-Fi</span><strong id="diagQualidadeWifi">--%</strong></article>
+      <article class="diagnostico-card"><span>Gateway</span><strong id="diagGateway">--</strong></article>
+      <article class="diagnostico-card"><span>MAC Address</span><strong id="diagMac">--</strong></article>
+      <article class="diagnostico-card"><span>Canal Wi-Fi</span><strong id="diagCanalWifi">--</strong></article>
+    </div>
+  </section>
+
+  <section class="diagnostico-secao">
+    <div class="diagnostico-secao-titulo">
+      <span class="secao-label">Sensor</span>
+      <h2>Ultrassônico</h2>
+    </div>
+    <div class="diagnostico-grid manutencao-grid">
+      <article class="diagnostico-card"><span>Distância atual</span><strong id="diagDistanciaAtual">-- cm</strong></article>
+      <article class="diagnostico-card"><span>Status do sensor</span><strong id="diagSensor">--</strong></article>
+      <article class="diagnostico-card"><span>Última leitura válida</span><strong id="diagUltimaLeituraValida">--</strong></article>
+      <article class="diagnostico-card"><span>Erros de leitura</span><strong id="diagErrosLeitura">--</strong></article>
+    </div>
+  </section>
+
+  <section class="diagnostico-secao">
+    <div class="diagnostico-secao-titulo">
+      <span class="secao-label">Bomba</span>
+      <h2>Operação</h2>
+    </div>
+    <div class="diagnostico-grid manutencao-grid">
+      <article class="diagnostico-card"><span>Estado da bomba</span><strong id="diagBomba">--</strong></article>
+      <article class="diagnostico-card"><span>Modo de operação</span><strong id="diagModo">--</strong></article>
+      <article class="diagnostico-card"><span>Tempo ligada</span><strong id="diagTempoBombaLigada">--</strong></article>
+    </div>
+  </section>
+
+  <section class="bluetooth-manutencao">
+    <div>
+      <span class="secao-label">Bluetooth</span>
+      <h2>Manutenção local</h2>
+      <p>Recurso reservado para manutenção local futura.</p>
+    </div>
+    <div class="bluetooth-status">
+      <strong id="diagBluetoothStatus">Bluetooth: Desativado</strong>
+      <button id="btnBluetoothManutencao" class="botao-secundario" type="button" disabled>Ativar modo manutenção Bluetooth</button>
+    </div>
+  </section>
+
+  <section class="firmware-update">
+    <div class="firmware-update-info">
+      <span class="secao-label">OTA</span>
+      <h2>Atualização de firmware</h2>
+      <p class="aviso-firmware">Use somente firmware oficial do HydroMonitor</p>
+      <dl class="firmware-status-lista">
+        <div>
+          <dt>Versão atual</dt>
+          <dd id="firmwareVersaoAtual">--</dd>
+        </div>
+        <div>
+          <dt>Estado</dt>
+          <dd id="firmwareEstado">aguardando</dd>
+        </div>
+      </dl>
+    </div>
+
+    <form id="formFirmwareUpdate" class="firmware-update-form">
+      <label class="arquivo-firmware" for="firmwareArquivo">
+        <span>Arquivo .bin</span>
+        <input id="firmwareArquivo" name="firmware" type="file" accept=".bin,application/octet-stream">
+      </label>
+      <button id="btnEnviarFirmware" class="botao-primario" type="submit">Enviar atualização</button>
+      <div class="progresso-firmware" aria-label="Progresso da atualização">
+        <div id="firmwareProgressoBarra" class="progresso-firmware-barra"></div>
+      </div>
+      <span id="firmwareProgressoTexto" class="firmware-progresso-texto">0%</span>
+      <p id="firmwareMensagem" class="mensagem-calibracao" role="status">Selecione um arquivo .bin oficial para preparar o envio futuro.</p>
+    </form>
+
+    <span id="diagFonteDados" class="status-fonte">Dados simulados</span>
+  </section>
+</main>
+
+<footer>
+  <strong>CB Trindade - P.O. - 2019</strong>
+  <span>Pelotão de Obras</span>
+</footer>
+<script src="js/diagnostico.js" defer></script>
+<script src="js/interface.js" defer></script>
+</body>
+</html>

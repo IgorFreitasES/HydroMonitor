@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Histórico | HydroMonitor</title>
+  <link rel="stylesheet" href="css/estilo.css">
+</head>
+<body>
+<header class="topo">
+  <div class="topo-esquerda">
+    <div>
+      <h1>HydroMonitor <span class="icone-agua" aria-hidden="true"></span></h1>
+      <span>Sistema Supervisório de Monitoramento Hídrico</span>
+      <details class="menu-secundario">
+        <summary>☰ Menu</summary>
+        <nav aria-label="Navegação secundária">
+          <a href="index.html">Monitoramento</a>
+          <a href="calibracao.html">Calibração</a>
+          <a href="diagnostico.html">Diagnóstico</a>
+          <a href="configuracoes.html">Configurações</a>
+          <a class="ativo" href="historico.html">Histórico</a>
+          <a href="sobre.html">Sobre</a>
+        </nav>
+      </details>
+    </div>
+  </div>
+  <div class="topo-centro" aria-label="Espaço reservado para brasão">
+    <div class="brasao-placeholder">
+      <strong>BRASÃO</strong>
+      <span>Adicionar depois</span>
+    </div>
+  </div>
+  <div class="topo-direita">
+    <div class="data-hora">
+      <span>Data e hora local</span>
+      <strong id="dataTexto">--/--/----</strong>
+      <strong id="horaTexto">--:--:--</strong>
+    </div>
+    <div class="clima-card" aria-label="Clima em Brasília-DF">
+      <span id="climaLocal">Brasília-DF</span>
+      <strong><span id="climaEmoji" aria-hidden="true">☁️</span> <span id="climaTemperatura">--°C</span></strong>
+      <small id="climaDescricao">Clima indisponível</small>
+    </div>
+  </div>
+</header>
+
+<main class="pagina-secundaria pagina-operacional">
+  <section class="diagnostico-cabecalho">
+    <div>
+      <span class="secao-label">Histórico</span>
+      <h2>Registros operacionais</h2>
+      <p>Histórico será habilitado após integração com armazenamento local ou servidor.</p>
+    </div>
+    <span class="status-fonte">Estrutura preparada</span>
+  </section>
+
+  <section class="grafico-placeholder" aria-label="Gráfico placeholder para futuras leituras">
+    <div class="linha-grafico linha-a"></div>
+    <div class="linha-grafico linha-b"></div>
+    <span>Gráfico placeholder para futuras leituras</span>
+  </section>
+
+  <section class="grade-configuracoes">
+    <article class="secao-operacional">
+      <span class="secao-label">Nível</span>
+      <h2>Histórico de nível</h2>
+      <p>Reservado para séries de percentual, volume estimado e variações de leitura.</p>
+    </article>
+    <article class="secao-operacional">
+      <span class="secao-label">Bomba</span>
+      <h2>Histórico de bomba</h2>
+      <p>Reservado para ciclos de acionamento, tempo ligada e modo de operação.</p>
+    </article>
+    <article class="secao-operacional">
+      <span class="secao-label">Eventos</span>
+      <h2>Eventos</h2>
+      <p>Reservado para conexões, reinicializações, alterações de calibração e manutenção.</p>
+    </article>
+    <article class="secao-operacional">
+      <span class="secao-label">Alarmes</span>
+      <h2>Alarmes</h2>
+      <p>Reservado para nível crítico, falhas de sensor, falhas de rede e indisponibilidade do ESP32.</p>
+    </article>
+  </section>
+</main>
+
+<footer>
+  <strong>CB Trindade - P.O. - 2019</strong>
+  <span>Pelotão de Obras</span>
+</footer>
+<script src="js/interface.js" defer></script>
+</body>
+</html>

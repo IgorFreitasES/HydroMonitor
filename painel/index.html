@@ -1,405 +1,233 @@
-<!DOCTYPE html>
-
+﻿<!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
-
-    <meta charset="UTF-8">
-
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
-
-    <title>HydroMonitor</title>
-
-    <link
-        rel="stylesheet"
-        href="css/estilo.css">
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HydroMonitor</title>
+  <link rel="stylesheet" href="css/estilo.css">
 </head>
-
 <body>
 <header class="topo">
-
-    <div class="topo-esquerda">
-
-        <div class="logo">
-
-            💧
-
-        </div>
-
-        <div>
-
-            <h1>HydroMonitor</h1>
-
-            <span>Sistema Supervisório de Monitoramento Hídrico</span>
-
-        </div>
-
+  <div class="topo-esquerda">
+    <div>
+      <h1>HydroMonitor <span class="icone-agua" aria-hidden="true"></span></h1>
+      <span>Sistema Supervisório de Monitoramento Hídrico</span>
+      <details class="menu-secundario">
+        <summary>☰ Menu</summary>
+        <nav aria-label="Navegação secundária">
+          <a class="ativo" href="index.html">Monitoramento</a>
+          <a href="calibracao.html">Calibração</a>
+          <a href="diagnostico.html">Diagnóstico</a>
+          <a href="configuracoes.html">Configurações</a>
+          <a href="historico.html">Histórico</a>
+          <a href="sobre.html">Sobre</a>
+        </nav>
+      </details>
     </div>
-
-    <div class="topo-direita">
-
-        <!-- Wi-Fi removido do cabeçalho -->
-
-
+  </div>
+  <div class="topo-centro" aria-label="Espaço reservado para brasão">
+    <div class="brasao-placeholder">
+      <strong>BRASÃO</strong>
+      <span>Adicionar depois</span>
     </div>
-
+  </div>
+  <div class="topo-direita">
+    <div class="data-hora" aria-live="polite">
+      <span>Data e hora local</span>
+      <strong id="dataTexto">--/--/----</strong>
+      <strong id="horaTexto">--:--:--</strong>
+    </div>
+    <div class="clima-card" aria-label="Clima em Brasília-DF">
+      <span id="climaLocal">Brasília-DF</span>
+      <strong><span id="climaEmoji" aria-hidden="true">☁️</span> <span id="climaTemperatura">--°C</span></strong>
+      <small id="climaDescricao">Clima indisponível</small>
+    </div>
+  </div>
 </header>
 
 <main class="dashboard">
-
-    <!-- PAINEL ESQUERDO -->
-
-    <aside class="painel painel-esquerdo">
-
-        <h2>Caixa d'Água</h2>
-
-        <div class="card">
-
-    <span class="card-titulo">
-        💧 NÍVEL DA ÁGUA
-    </span>
-
-    <div class="barra">
-
-        <div
-            id="barraNivel"
-            class="barra-preenchimento">
-        </div>
-
+  <aside class="painel painel-esquerdo">
+    <h2>Reservatório Superior</h2>
+    <div class="card">
+      <span class="card-titulo">NÍVEL DA ÁGUA</span>
+      <div class="barra">
+        <div id="barraNivel" class="barra-preenchimento"></div>
+      </div>
+      <span id="nivelTexto" class="valor-grande">0%</span>
+      <p id="descricaoNivel" class="descricao-nivel">Aguardando...</p>
     </div>
+    <div class="card">
+      <h3>Volume</h3>
+      <strong id="volumeTexto">0 L</strong>
+    </div>
+  </aside>
 
-    <span
-        id="nivelTexto"
-        class="valor-grande">
-
-        0%
-
-    </span>
-
-    
-
-
-    <p id="descricaoNivel" class="descricao-nivel">
-    Aguardando...
-</p>
-    
-
-</div>
-
-<div class="card">
-
-            <h3>🪣 Volume</h3>
-
-            <strong id="volumeTexto">0 L</strong>
-
-        </div>
-
-       
-
-    </aside>
-
-
-    <!-- PAINEL CENTRAL -->
-
-    <section class="painel-central">
-
-        <svg
-    id="torreSVG"
-    viewBox="0 0 500 900">
-
-    <!-- ========================= -->
-    <!-- PEDESTAL -->
-    <!-- ========================= -->
-
-    <rect
-    id="baseConcreto"
-    x="55"
-    y="705"
-    width="390"
-    height="32"
-    rx="10"
-    fill="#8b8f95"/>
-
-    <rect
-    id="grama"
-    x="25"
-        y="735"
-        width="450"
-        height="12"
-        rx="10"
-        fill="#43b047"/>
-
-    <!-- ========================= -->
-    <!-- RESERVATÓRIO INFERIOR -->
-    <!-- ========================= -->
-        <g id="reservatorioInferior">
-
-    <ellipse
-        id="tampaInferior"
-        cx="250"
-        cy="520"
-        rx="135"
-        ry="22"
-        fill="#d8d8d8"/>
-
-    <rect
-        id="corpoInferior"
-        x="115"
-        y="520"
-        width="270"
-        height="165"
-        fill="#cfcfcf"/>
-
-    <ellipse
-        id="fundoInferior"
-        cx="250"
-        cy="685"
-        rx="135"
-        ry="22"
-        fill="#9c9c9c"/>
-
-</g>
-
-    <!-- ========================= -->
-    <!-- RESERVATÓRIO SUPERIOR -->
-    <!-- ========================= -->
-
-    <g id="reservatorioSuperior">
-
-    <ellipse
-        id="tampaSuperior"
-        cx="250"
-        cy="120"
-        rx="145"
-        ry="22"
-        fill="#dddddd"/>
-
-    <rect
-        id="corpoSuperior"
-        x="105"
-        y="120"
-        width="290"
-        height="170"
-        fill="#cecece"/>
-
-    <ellipse
-        id="fundoSuperior"
-        cx="250"
-        cy="290"
-        rx="145"
-        ry="22"
-        fill="#a8a8a8"/>
-
-</g>
-
-    <!-- ========================= -->
-    <!-- COLUNAS -->
-    <!-- ========================= -->
-
-    <rect
-    id="colunaEsquerda"
-        x="90"
-        y="118"
-        width="58"
-        height="567"
-        rx="10"
-        fill="#cfcfcf"/>
-
-    <rect
-    id="colunaDireita"
-        x="352"
-        y="118"
-        width="58"
-        height="567"
-        rx="10"
-        fill="#cfcfcf"/>
-
-    <!-- ========================= -->
-    <!-- ÁREA DA ÁGUA -->
-    <!-- ========================= -->
-
-    <clipPath id="clipAgua">
-
-    <rect
-        id="areaAgua"
-        x="105"
-            y="120"
-            width="290"
-            height="170"/>
-
-    </clipPath>
-
-               <!-- ========================= -->
-    <!-- DEFINIÇÕES -->
-    <!-- ========================= -->
-
-    <defs>
-
-        <linearGradient
-    id="gradienteAgua"
-    x1="0%"
-    y1="0%"
-    x2="0%"
-    y2="100%">
-
-    <stop offset="0%" stop-color="#bfe8ff"/>
-
-    <stop offset="35%" stop-color="#67c4ff"/>
-
-    <stop offset="75%" stop-color="#2b8cff"/>
-
-    <stop offset="100%" stop-color="#0068e0"/>
-
-</linearGradient>
-
-        <linearGradient
-            id="gradienteReflexo"
-            x1="0%"
-            y1="0%"
-            x2="100%"
-            y2="0%">
-
-            <stop offset="0%" stop-color="rgba(255,255,255,0)"/>
-            <stop offset="50%" stop-color="rgba(255,255,255,.35)"/>
-            <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
-
+  <section class="painel-central">
+    <svg id="torreSVG" viewBox="0 0 500 720" style="width:680px;max-width:100%;margin-top:-96px" role="img" aria-label="Torre de caixa d'água com nível do reservatório">
+      <defs>
+        <linearGradient id="concreto" x1="0" x2="1">
+          <stop offset="0%" stop-color="#6f685c"/>
+          <stop offset="12%" stop-color="#3f3a33"/>
+          <stop offset="33%" stop-color="#928879"/>
+          <stop offset="48%" stop-color="#c1b8a6"/>
+          <stop offset="68%" stop-color="#766d5f"/>
+          <stop offset="86%" stop-color="#4a443b"/>
+          <stop offset="100%" stop-color="#a79e8e"/>
         </linearGradient>
 
-    </defs>
+        <linearGradient id="concretoEscuro" x1="0" x2="1">
+          <stop offset="0%" stop-color="#1d1b18"/>
+          <stop offset="30%" stop-color="#50493f"/>
+          <stop offset="52%" stop-color="#756b5c"/>
+          <stop offset="76%" stop-color="#2b2722"/>
+          <stop offset="100%" stop-color="#11100e"/>
+        </linearGradient>
 
-    <!-- ========================= -->
-    <!-- ÁGUA -->
-    <!-- ========================= -->
+        <linearGradient id="aguaGrad" x1="0" x2="1">
+          <stop offset="0%" stop-color="#045d9d"/>
+          <stop offset="42%" stop-color="#0b86dc"/>
+          <stop offset="72%" stop-color="#0069b5"/>
+          <stop offset="100%" stop-color="#053f78"/>
+        </linearGradient>
 
+        <linearGradient id="gramaGrad" x1="0" x2="1">
+          <stop offset="0%" stop-color="#16260a"/>
+          <stop offset="35%" stop-color="#58721c"/>
+          <stop offset="70%" stop-color="#344b11"/>
+          <stop offset="100%" stop-color="#132207"/>
+        </linearGradient>
 
-       <g id="grupoAgua">
+        <filter id="texturaConcreto" x="0%" y="0%" width="100%" height="100%">
+          <feTurbulence type="fractalNoise" baseFrequency=".68" numOctaves="5" seed="17"/>
+          <feColorMatrix type="saturate" values="0"/>
+          <feComposite operator="in" in2="SourceAlpha"/>
+          <feComponentTransfer>
+            <feFuncA type="table" tableValues="0 .36"/>
+          </feComponentTransfer>
+        </filter>
 
-    <rect
-        id="agua"
-        clip-path="url(#clipAgua)"
-        x="105"
-        y="155"
-        width="290"
-        height="100"
-        fill="url(#gradienteAgua)"
-        opacity="0.72"/>
+        <clipPath id="clipAgua">
+          <path d="M112 132 C152 146 348 146 388 132 L388 286 C348 302 152 302 112 286 Z"/>
+        </clipPath>
 
-    <path
-        id="onda"
-        clip-path="url(#clipAgua)"
-        d="
-        M105 190
+        <clipPath id="clipReservatorioSuperior">
+          <path d="M104 88 C104 64 396 64 396 88 L396 286 C396 310 104 310 104 286 Z"/>
+        </clipPath>
+      </defs>
 
-        C125 184 145 196 165 190
+      <ellipse cx="250" cy="650" rx="232" ry="24" fill="#05070a" opacity=".16"/>
 
-        S205 184 225 190
+      <g id="torreConcreto">
+        <g id="colunas">
+          <rect x="46" y="88" width="70" height="562" rx="5" fill="url(#concreto)"/>
+          <rect x="384" y="88" width="70" height="562" rx="5" fill="url(#concreto)"/>
+          <rect x="46" y="88" width="70" height="562" rx="5" filter="url(#texturaConcreto)" opacity=".52"/>
+          <rect x="384" y="88" width="70" height="562" rx="5" filter="url(#texturaConcreto)" opacity=".52"/>
+          <path d="M116 94 L116 648" stroke="#171411" stroke-opacity=".48" stroke-width="3"/>
+          <path d="M384 94 L384 648" stroke="#f6e8cc" stroke-opacity=".18" stroke-width="2"/>
+          <g stroke="#211d18" stroke-opacity=".42" stroke-width="1">
+            <path d="M52 134 H113"/>
+            <path d="M52 226 H113"/>
+            <path d="M52 318 H113"/>
+            <path d="M52 410 H113"/>
+            <path d="M52 502 H113"/>
+            <path d="M52 594 H113"/>
+            <path d="M388 134 H449"/>
+            <path d="M388 226 H449"/>
+            <path d="M388 318 H449"/>
+            <path d="M388 410 H449"/>
+            <path d="M388 502 H449"/>
+            <path d="M388 594 H449"/>
+          </g>
+        </g>
 
-        S265 196 285 190
+        <g id="reservatorioInferior">
+          <ellipse cx="250" cy="476" rx="146" ry="26" fill="url(#concreto)"/>
+          <rect x="104" y="476" width="292" height="146" fill="url(#concreto)"/>
+          <rect x="104" y="476" width="292" height="146" filter="url(#texturaConcreto)" opacity=".55"/>
+          <ellipse cx="250" cy="622" rx="146" ry="27" fill="url(#concretoEscuro)" opacity=".54"/>
+          <ellipse cx="250" cy="477" rx="136" ry="18" fill="#f0dec1" opacity=".18"/>
+          <g stroke="#201c17" stroke-opacity=".36" stroke-width="1">
+            <path d="M108 520 H392"/>
+            <path d="M108 568 H392"/>
+            <path d="M146 478 V620"/>
+            <path d="M250 477 V623"/>
+            <path d="M354 478 V620"/>
+          </g>
+        </g>
 
-        S325 184 345 190
+        <g id="reservatorioSuperior" clip-path="url(#clipReservatorioSuperior)">
+          <rect x="104" y="88" width="292" height="198" fill="url(#concreto)"/>
+          <rect x="104" y="88" width="292" height="198" filter="url(#texturaConcreto)" opacity=".58"/>
+          <rect x="104" y="144" width="292" height="84" fill="#15110e" opacity=".16"/>
+          <g id="grupoAgua" clip-path="url(#clipAgua)">
+            <rect id="agua" x="112" y="286" width="276" height="0" fill="url(#aguaGrad)"/>
+            <path id="onda" d="M112 286 C135 278 158 294 181 286 S227 278 250 286 S296 294 319 286 S365 278 388 286 L388 308 L112 308 Z" fill="#b9efff" opacity=".78"/>
+            <path id="reflexoAgua" d="M126 136 C150 130 174 130 198 137" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" opacity=".2"/>
+            <rect x="114" y="132" width="30" height="154" fill="#fff" opacity=".05"/>
+          </g>
+          <g stroke="#211c17" stroke-opacity=".34" stroke-width="1">
+            <path d="M108 134 H392"/>
+            <path d="M108 188 H392"/>
+            <path d="M108 240 H392"/>
+            <path d="M148 88 V286"/>
+            <path d="M250 78 V290"/>
+            <path d="M352 88 V286"/>
+          </g>
+        </g>
 
-        S375 196 395 190
+        <ellipse id="tampaSuperior" cx="250" cy="88" rx="146" ry="27" fill="url(#concreto)"/>
+        <ellipse cx="250" cy="88" rx="137" ry="18" fill="#f3e2c4" opacity=".22"/>
+        <path d="M106 88 C144 64 356 64 394 88" fill="none" stroke="#f7e8ca" stroke-width="5" opacity=".22"/>
+        <path d="M108 104 C150 126 350 126 392 104" fill="none" stroke="#211b16" stroke-width="3" opacity=".22"/>
+        <ellipse id="fundoSuperior" cx="250" cy="286" rx="146" ry="27" fill="url(#concretoEscuro)" opacity=".98"/>
+        <path d="M105 285 C144 310 356 310 395 285" fill="none" stroke="#070605" stroke-width="5" opacity=".44"/>
+      </g>
 
-        L395 290
+      <g id="acabamento">
+        <text id="nivelTorreTexto" x="250" y="205" text-anchor="middle" fill="#ffffff" font-family="Segoe UI, Arial, sans-serif" font-size="42" font-weight="700">0%</text>
+        <g id="gramado">
+          <path d="M54 651 C106 640 142 652 188 647 C230 642 267 635 312 645 C360 655 404 642 454 653 C468 656 478 661 484 667 L16 667 C24 659 36 654 54 651 Z" fill="#25370d"/>
+          <path d="M26 661 C78 645 129 667 184 654 C232 643 268 660 318 650 C376 638 424 657 474 662 L474 676 L26 676 Z" fill="url(#gramaGrad)"/>
+          <path d="M48 665 C92 653 146 671 198 660 C239 651 283 668 327 657 C383 643 426 663 462 666" fill="none" stroke="#617923" stroke-width="7" stroke-linecap="round" opacity=".9"/>
+          <g stroke-linecap="round">
+            <path d="M46 663 L39 648 M61 664 L68 647 M78 664 L76 650 M96 663 L104 646 M116 664 L111 649 M138 663 L146 646 M158 663 L156 648 M180 663 L190 646 M202 663 L196 650 M224 663 L232 646 M248 663 L248 648 M272 663 L264 647 M296 663 L304 646 M318 663 L316 648 M342 663 L353 646 M366 663 L361 649 M390 663 L399 646 M414 663 L411 650 M438 663 L449 648 M462 664 L456 650" stroke="#6f8d29" stroke-width="3"/>
+            <path d="M35 668 L48 655 M70 669 L82 654 M104 670 L92 656 M134 670 L146 656 M168 669 L180 655 M214 670 L226 656 M258 670 L270 655 M306 670 L294 656 M350 669 L362 655 M392 670 L381 656 M432 670 L444 655 M468 669 L456 656" stroke="#31460f" stroke-width="4"/>
+            <path d="M88 661 L94 652 M121 660 L128 651 M154 661 L162 650 M187 660 L194 652 M221 660 L229 651 M255 660 L262 651 M289 660 L297 651 M323 660 L330 652 M357 660 L365 651 M391 660 L398 652 M425 660 L433 651" stroke="#91a944" stroke-width="2"/>
+          </g>
+        </g>
+      </g>
+    </svg>
+  </section>
 
-        L105 290
-
-        Z"
-        fill="#9fe2ff"
-        opacity=".55"/>
-
-    <rect
-        id="reflexoAgua"
-        x="116"
-        y="112"
-        width="8"
-        height="135"
-        rx="4"
-        fill="white"
-        opacity="0.08"/>
-
-
-        <!-- ========================= -->
-    <!-- BRILHO SUPERIOR -->
-    <!-- ========================= -->
-
-    <ellipse
-    id="brilhoSuperior"
-    cx="250"
-    cy="128"
-
-        rx="138"
-
-        ry="8"
-
-        fill="white"
-
-        opacity=".18"/>
-
-</g>
-
-
-
-
-    
-
-</svg>
-
-    </section>
-
-
-    <!-- PAINEL DIREITO -->
-
-    <aside class="painel painel-direito">
-
-
-        <h2>Monitoramento</h2>
-
-        
-         <div class="card">
-
-            <h3>⚙ Sistema</h3>
-
-            <strong id="statusTexto">---</strong>
-
-        </div>
-        
-
-        <div class="card">
-
-            <h3>⚡ Bomba</h3>
-
-            <strong id="bombaTexto">Desligada</strong>
-
-        </div>
-
-        <div class="card">
-
-            <h3>📶 Wi-Fi</h3>
-
-            <strong id="wifiTexto">0%</strong>
-
-        </div>
-
-    </aside>
-
+  <aside class="painel painel-direito">
+    <h2>Monitoramento</h2>
+    <div class="card">
+      <h3>Sistema</h3>
+      <strong id="statusTexto">---</strong>
+    </div>
+    <div class="card">
+      <h3>Bomba</h3>
+      <strong id="bombaTexto">Desligada</strong>
+    </div>
+    <div class="card">
+      <h3>Wi-Fi</h3>
+      <div id="wifiBarras" class="wifi-barras" aria-hidden="true">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <strong id="wifiTexto">0%</strong>
+    </div>
+  </aside>
 </main>
 
-
- 
-
-
 <footer>
-
-    HydroMonitor © 2026
-
+  <strong>CB Trindade - P.O. - 2019</strong>
+  <span>Pelotão de Obras</span>
 </footer>
-
 <script src="js/app.js" defer></script>
-<script src="js/torre.js"></script>
-
+<script src="js/interface.js" defer></script>
 </body>
-
 </html>

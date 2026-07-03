@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calibração | HydroMonitor</title>
+  <link rel="stylesheet" href="css/estilo.css">
+</head>
+<body>
+<header class="topo">
+  <div class="topo-esquerda">
+    <div>
+      <h1>HydroMonitor <span class="icone-agua" aria-hidden="true"></span></h1>
+      <span>Sistema Supervisório de Monitoramento Hídrico</span>
+      <details class="menu-secundario">
+        <summary>☰ Menu</summary>
+        <nav aria-label="Navegação secundária">
+          <a href="index.html">Monitoramento</a>
+          <a class="ativo" href="calibracao.html">Calibração</a>
+          <a href="diagnostico.html">Diagnóstico</a>
+          <a href="configuracoes.html">Configurações</a>
+          <a href="historico.html">Histórico</a>
+          <a href="sobre.html">Sobre</a>
+        </nav>
+      </details>
+    </div>
+  </div>
+  <div class="topo-centro" aria-label="Espaço reservado para brasão">
+    <div class="brasao-placeholder">
+      <strong>BRASÃO</strong>
+      <span>Adicionar depois</span>
+    </div>
+  </div>
+  <div class="topo-direita">
+    <div class="data-hora">
+      <span>Data e hora local</span>
+      <strong id="dataTexto">--/--/----</strong>
+      <strong id="horaTexto">--:--:--</strong>
+    </div>
+    <div class="clima-card" aria-label="Clima em Brasília-DF">
+      <span id="climaLocal">Brasília-DF</span>
+      <strong><span id="climaEmoji" aria-hidden="true">☁️</span> <span id="climaTemperatura">--°C</span></strong>
+      <small id="climaDescricao">Clima indisponível</small>
+    </div>
+  </div>
+</header>
+
+<main class="pagina-secundaria calibracao-page">
+  <section class="calibracao-cabecalho">
+    <div>
+      <span class="secao-label">Calibração do sensor</span>
+      <h2>Referências do reservatório</h2>
+      <p>Configure a capacidade e as distâncias medidas pelo sensor ultrassônico para converter a leitura atual em nível percentual do reservatório.</p>
+    </div>
+    <span id="calibracaoFonteDados" class="status-fonte">Dados simulados</span>
+  </section>
+
+  <section class="calibracao-ajuda">
+    <div>
+      <strong>Referência de 100%</strong>
+      <p>Calibre quando a água estiver no nível máximo operacional, por exemplo quando começa a sair pelo ladrão.</p>
+    </div>
+    <div>
+      <strong>Referência de 0%</strong>
+      <p>Use o menor nível útil de operação do reservatório, abaixo do qual o abastecimento deve ser tratado como crítico.</p>
+    </div>
+  </section>
+
+  <section class="calibracao-grid">
+    <form id="formCalibracao" class="calibracao-form">
+      <div class="campo-calibracao capacidade">
+        <label for="capacidadeReservatorio">Capacidade do reservatório</label>
+        <div class="input-com-unidade">
+          <input id="capacidadeReservatorio" type="number" value="108800" readonly>
+          <span>litros</span>
+        </div>
+      </div>
+
+      <div class="campo-calibracao">
+        <label for="distanciaCheio">Distância para 100%</label>
+        <div class="input-com-unidade">
+          <input id="distanciaCheio" type="number" min="0" step="0.1" inputmode="decimal">
+          <span>cm</span>
+        </div>
+      </div>
+
+      <div class="campo-calibracao">
+        <label for="distanciaVazio">Distância para 0%</label>
+        <div class="input-com-unidade">
+          <input id="distanciaVazio" type="number" min="0" step="0.1" inputmode="decimal">
+          <span>cm</span>
+        </div>
+      </div>
+
+      <div class="acoes-calibracao">
+        <button id="btnDefinirCheio" class="botao-secundario" type="button">Definir nível atual como 100%</button>
+        <button id="btnDefinirVazio" class="botao-secundario" type="button">Definir nível atual como 0%</button>
+        <button id="btnSalvarCalibracao" class="botao-primario" type="submit">Salvar calibração</button>
+        <button id="btnVoltarCalibracao" class="botao-secundario" type="button">Voltar ao monitoramento</button>
+      </div>
+    </form>
+
+    <aside class="calibracao-leituras" aria-live="polite">
+      <article class="diagnostico-card destaque">
+        <span>Distância atual lida pelo sensor</span>
+        <strong id="distanciaAtual">-- cm</strong>
+      </article>
+      <article class="diagnostico-card">
+        <span>Nível calculado atual</span>
+        <strong id="nivelCalculadoAtual">--%</strong>
+      </article>
+      <article class="diagnostico-card">
+        <span>Última atualização</span>
+        <strong id="calibracaoUltimaAtualizacao">--</strong>
+      </article>
+    </aside>
+  </section>
+
+  <p id="mensagemCalibracao" class="mensagem-calibracao" role="status">Aguardando leitura inicial.</p>
+</main>
+
+<footer>
+  <strong>CB Trindade - P.O. - 2019</strong>
+  <span>Pelotão de Obras</span>
+</footer>
+<script src="js/calibracao.js" defer></script>
+<script src="js/interface.js" defer></script>
+</body>
+</html>

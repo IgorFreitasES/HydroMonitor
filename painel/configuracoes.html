@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Configurações | HydroMonitor</title>
+  <link rel="stylesheet" href="css/estilo.css">
+</head>
+<body>
+<header class="topo">
+  <div class="topo-esquerda">
+    <div>
+      <h1>HydroMonitor <span class="icone-agua" aria-hidden="true"></span></h1>
+      <span>Sistema Supervisório de Monitoramento Hídrico</span>
+      <details class="menu-secundario">
+        <summary>☰ Menu</summary>
+        <nav aria-label="Navegação secundária">
+          <a href="index.html">Monitoramento</a>
+          <a href="calibracao.html">Calibração</a>
+          <a href="diagnostico.html">Diagnóstico</a>
+          <a class="ativo" href="configuracoes.html">Configurações</a>
+          <a href="historico.html">Histórico</a>
+          <a href="sobre.html">Sobre</a>
+        </nav>
+      </details>
+    </div>
+  </div>
+  <div class="topo-centro" aria-label="Espaço reservado para brasão">
+    <div class="brasao-placeholder">
+      <strong>BRASÃO</strong>
+      <span>Adicionar depois</span>
+    </div>
+  </div>
+  <div class="topo-direita">
+    <div class="data-hora">
+      <span>Data e hora local</span>
+      <strong id="dataTexto">--/--/----</strong>
+      <strong id="horaTexto">--:--:--</strong>
+    </div>
+    <div class="clima-card" aria-label="Clima em Brasília-DF">
+      <span id="climaLocal">Brasília-DF</span>
+      <strong><span id="climaEmoji" aria-hidden="true">☁️</span> <span id="climaTemperatura">--°C</span></strong>
+      <small id="climaDescricao">Clima indisponível</small>
+    </div>
+  </div>
+</header>
+
+<main class="pagina-secundaria pagina-operacional">
+  <section class="diagnostico-cabecalho">
+    <div>
+      <span class="secao-label">Configurações</span>
+      <h2>Parâmetros do HydroMonitor</h2>
+      <p>Área preparada para ajustes operacionais. Os controles abaixo são visuais por enquanto e poderão ser ligados ao backend do ESP32 futuramente.</p>
+    </div>
+    <div class="acoes-pagina">
+      <button class="botao-primario" type="button">Salvar configurações</button>
+      <button class="botao-secundario" type="button">Restaurar padrões</button>
+    </div>
+  </section>
+
+  <section class="secao-operacional wifi-configuracao">
+    <div>
+      <span class="secao-label">Configuração de Wi-Fi</span>
+      <h2>Rede do ESP32</h2>
+      <p>Envie novas credenciais para o ESP32. A senha salva não será exibida depois.</p>
+    </div>
+    <form id="formWifi" class="wifi-form">
+      <label>
+        <span>SSID</span>
+        <input id="wifiSsid" name="ssid" type="text" autocomplete="off" placeholder="Nome da rede Wi-Fi">
+      </label>
+      <label>
+        <span>Senha</span>
+        <input id="wifiSenha" name="senha" type="password" autocomplete="new-password" placeholder="Senha da rede">
+      </label>
+      <div class="acoes-calibracao">
+        <button id="btnSalvarWifi" class="botao-primario" type="submit">Salvar Wi-Fi</button>
+        <button id="btnTestarWifi" class="botao-secundario" type="button">Testar conexão</button>
+      </div>
+      <p id="wifiMensagem" class="mensagem-calibracao" role="status">Consultando status do Wi-Fi no ESP32...</p>
+    </form>
+  </section>
+
+  <section class="grade-configuracoes">
+    <article class="secao-operacional">
+      <span class="secao-label">Dados do reservatório</span>
+      <h2>Reservatório superior</h2>
+      <dl class="lista-dados">
+        <div><dt>Capacidade</dt><dd>108800 litros</dd></div>
+        <div><dt>Unidade de nível</dt><dd>Percentual (%)</dd></div>
+        <div><dt>Volume</dt><dd>Calculado no painel</dd></div>
+      </dl>
+    </article>
+
+    <article class="secao-operacional">
+      <span class="secao-label">Rede</span>
+      <h2>Comunicação</h2>
+      <dl class="lista-dados">
+        <div><dt>Origem dos dados</dt><dd>ESP32 /dados</dd></div>
+        <div><dt>Diagnóstico futuro</dt><dd>GET /diagnostico</dd></div>
+        <div><dt>Configuração de Wi-Fi</dt><dd>POST /wifi</dd></div>
+      </dl>
+    </article>
+
+    <article class="secao-operacional">
+      <span class="secao-label">Alertas</span>
+      <h2>Limites operacionais</h2>
+      <dl class="lista-dados">
+        <div><dt>Nível baixo</dt><dd>Placeholder</dd></div>
+        <div><dt>Nível crítico</dt><dd>Placeholder</dd></div>
+        <div><dt>Falha de leitura</dt><dd>Exibir no diagnóstico</dd></div>
+      </dl>
+    </article>
+
+    <article class="secao-operacional">
+      <span class="secao-label">Sistema</span>
+      <h2>Interface</h2>
+      <dl class="lista-dados">
+        <div><dt>Atualização do painel</dt><dd>Automática</dd></div>
+        <div><dt>Clima</dt><dd>OpenWeather preparado</dd></div>
+        <div><dt>Menu</dt><dd>Navegação secundária</dd></div>
+      </dl>
+    </article>
+
+    <article class="secao-operacional">
+      <span class="secao-label">Manutenção</span>
+      <h2>Rotinas futuras</h2>
+      <dl class="lista-dados">
+        <div><dt>OTA</dt><dd>POST /update preparado</dd></div>
+        <div><dt>Bluetooth</dt><dd>Reservado para manutenção local</dd></div>
+        <div><dt>Logs</dt><dd>Histórico futuro</dd></div>
+      </dl>
+    </article>
+  </section>
+</main>
+
+<footer>
+  <strong>CB Trindade - P.O. - 2019</strong>
+  <span>Pelotão de Obras</span>
+</footer>
+<script src="js/interface.js" defer></script>
+<script src="js/configuracoes.js" defer></script>
+</body>
+</html>

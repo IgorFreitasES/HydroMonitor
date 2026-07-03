@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sobre | HydroMonitor</title>
+  <link rel="stylesheet" href="css/estilo.css">
+</head>
+<body>
+<header class="topo">
+  <div class="topo-esquerda">
+    <div>
+      <h1>HydroMonitor <span class="icone-agua" aria-hidden="true"></span></h1>
+      <span>Sistema Supervisório de Monitoramento Hídrico</span>
+      <details class="menu-secundario">
+        <summary>☰ Menu</summary>
+        <nav aria-label="Navegação secundária">
+          <a href="index.html">Monitoramento</a>
+          <a href="calibracao.html">Calibração</a>
+          <a href="diagnostico.html">Diagnóstico</a>
+          <a href="configuracoes.html">Configurações</a>
+          <a href="historico.html">Histórico</a>
+          <a class="ativo" href="sobre.html">Sobre</a>
+        </nav>
+      </details>
+    </div>
+  </div>
+  <div class="topo-centro" aria-label="Espaço reservado para brasão">
+    <div class="brasao-placeholder">
+      <strong>BRASÃO</strong>
+      <span>Adicionar depois</span>
+    </div>
+  </div>
+  <div class="topo-direita">
+    <div class="data-hora">
+      <span>Data e hora local</span>
+      <strong id="dataTexto">--/--/----</strong>
+      <strong id="horaTexto">--:--:--</strong>
+    </div>
+    <div class="clima-card" aria-label="Clima em Brasília-DF">
+      <span id="climaLocal">Brasília-DF</span>
+      <strong><span id="climaEmoji" aria-hidden="true">☁️</span> <span id="climaTemperatura">--°C</span></strong>
+      <small id="climaDescricao">Clima indisponível</small>
+    </div>
+  </div>
+</header>
+
+<main class="pagina-secundaria pagina-operacional">
+  <section class="sobre-hero">
+    <span class="secao-label">Sobre</span>
+    <h2>HydroMonitor</h2>
+    <p>Sistema Supervisório de Monitoramento Hídrico</p>
+  </section>
+
+  <section class="grade-configuracoes">
+    <article class="secao-operacional">
+      <span class="secao-label">Assinatura</span>
+      <h2>Responsável</h2>
+      <p>CB Trindade - P.O. - 2019</p>
+      <p>Pelotão de Obras</p>
+    </article>
+    <article class="secao-operacional">
+      <span class="secao-label">Versão</span>
+      <h2>Sistema</h2>
+      <p>Versão do sistema: 1.0 em preparação</p>
+    </article>
+    <article class="secao-operacional">
+      <span class="secao-label">Tecnologias</span>
+      <h2>Base técnica</h2>
+      <ul class="lista-tecnologias">
+        <li>ESP32</li>
+        <li>Sensor ultrassônico</li>
+        <li>HTML/CSS/JS</li>
+        <li>Wi-Fi</li>
+      </ul>
+    </article>
+    <article class="secao-operacional">
+      <span class="secao-label">Bluetooth</span>
+      <h2>Manutenção local</h2>
+      <p>Bluetooth reservado para manutenção local futura. Atualmente desativado para preservar estabilidade e segurança.</p>
+    </article>
+  </section>
+</main>
+
+<footer>
+  <strong>CB Trindade - P.O. - 2019</strong>
+  <span>Pelotão de Obras</span>
+</footer>
+<script src="js/interface.js" defer></script>
+</body>
+</html>

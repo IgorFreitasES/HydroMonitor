@@ -1,84 +1,54 @@
-/* ==========================================
-   COMPONENTES
-========================================== */
-
-.card-titulo{
-
-    color:#8fb8ff;
-
-    font-size:13px;
-
-    font-weight:700;
-
-    letter-spacing:1px;
-
-    display:block;
-
-    margin-bottom:18px;
-
+.card-titulo {
+  color: #8fb8ff;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .8px;
+  line-height: 18px;
+  display: block;
+  margin-bottom: 16px;
+  text-align: center;
+  text-transform: uppercase;
 }
 
-.barra{
-
-    width:100%;
-
-    height:10px;
-
-    background:#2d3d63;
-
-    border-radius:50px;
-
-    overflow:hidden;
-
-    margin-bottom:18px;
-
+.barra {
+  width: 100%;
+  height: 10px;
+  background: #2d3d63;
+  border-radius: 50px;
+  overflow: hidden;
+  margin-bottom: 20px;
 }
 
-.barra-preenchimento{
-
-    width:0%;
-
-    height:100%;
-
-    background:
-        linear-gradient(
-            90deg,
-            #42d4ff,
-            #1e90ff,
-            #005eff
-        );
-
-    border-radius:50px;
-
-    transition:width .5s ease;
-
-    box-shadow:
-        0 0 12px rgba(0,170,255,.7);
-
+.barra-preenchimento {
+  width: 0%;
+  height: 100%;
+  background:
+    linear-gradient(
+      90deg,
+      #42d4ff,
+      #1e90ff,
+      #005eff
+    );
+  border-radius: 50px;
+  transition: width .5s ease;
+  box-shadow: 0 0 12px rgba(0,170,255,.7);
 }
 
-.valor-grande{
-
-    display:block;
-
-    font-size:36px;
-
-    font-weight:700;
-
-    color:white;
-
+.valor-grande {
+  display: block;
+  font-size: 38px;
+  font-weight: 750;
+  line-height: 44px;
+  color: white;
+  letter-spacing: .2px;
+  text-align: center;
 }
 
-.descricao-nivel{
-
-    display:block;
-
-    margin-top:10px;
-
-    color:#9fb6d6;
-
-    font-size:14px;
-
-    line-height:20px;
-
+.descricao-nivel {
+  display: block;
+  margin-top: 12px;
+  color: #9fb6d6;
+  font-size: 14px;
+  line-height: 21px;
+  text-align: center;
 }
