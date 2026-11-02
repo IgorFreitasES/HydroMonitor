@@ -33,6 +33,15 @@ O **Hidromonitor** é uma solução open-source baseada em IoT (Internet das Coi
 - [Arduino IDE](https://www.arduino.cc/en/software) ou extensão [PlatformIO](https://platformio.org/) no VS Code.
 - Driver **CP210x** ou **CH340** instalado para comunicação USB com o ESP32.
 
+
+---
+
+## 📷 Demonstração da Interface
+
+![Demonstração do Dashboard](assets/dashboard.png)
+
+---
+
 ### Passo a Passo
 
 1. **Clonar o repositório:**
