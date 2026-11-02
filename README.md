@@ -38,7 +38,7 @@ O **Hidromonitor** é uma solução open-source baseada em IoT (Internet das Coi
 
 ## 📷 Demonstração da Interface
 
-![Demonstração do Dashboard](assets/dashboard.png)
+![Demonstração do Dashboard](dashboard.png)
 
 ---
 
